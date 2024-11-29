@@ -88,7 +88,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuarioActual.setCorreo(usuarioDto.getCorreo());
             usuarioActual.setCelular(usuarioDto.getCelular());
             usuarioActual.setDireccion(usuarioDto.getDireccion());
-            usuarioActual.setEstado(usuarioDto.getEstado());
+            usuarioActual.setEstado(usuarioDto.isEstado());
 
             return usuarioMapper.toDto(usuarioRepository.save(usuarioActual));
         }

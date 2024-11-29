@@ -43,5 +43,5 @@ public class Usuario {
 	 private String direccion;
 	 
 	 @Column(name = "estado")
-	 private String estado;
+	 private boolean estado;
 }

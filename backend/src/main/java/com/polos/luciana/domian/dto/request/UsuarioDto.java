@@ -42,8 +42,7 @@ public class UsuarioDto {
 	@NotBlank(message = "Direccion"+NOT_BLANK)
 	@NotNull(message = "Direccion"+NOT_NULL)
 	String direccion;
-	
-	@NotBlank(message = "Estado"+NOT_BLANK)
+
 	@NotNull(message = "Estado"+NOT_NULL)
-	String estado;
+	boolean estado;
 }

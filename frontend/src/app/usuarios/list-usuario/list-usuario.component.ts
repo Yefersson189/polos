@@ -14,7 +14,9 @@ export class ListUsuarioComponent {
 
   constructor(private usuarioService: UsuarioService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getAllProducts();
+   }
 
   getAllProducts() {
     this.usuarioService.getUsuarios().subscribe((data) => {
