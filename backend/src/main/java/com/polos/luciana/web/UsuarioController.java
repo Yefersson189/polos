@@ -10,6 +10,7 @@ import com.polos.luciana.domian.dto.request.UsuarioDto;
 
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins="http://localhost:4200", maxAge=3600)
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {

@@ -7,7 +7,7 @@ import { Usuario } from '../models/Usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://localhost:8080/usuario';
+  private apiUrl = 'http://localhost:8080/polos_back/usuarios';
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class UsuarioService {
   }
 
   createUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.apiUrl, usuario);
+    return this.http.post<Usuario>(`${this.apiUrl}/add`, usuario);
   }
 
   updateUsuario(usuario: Usuario) {

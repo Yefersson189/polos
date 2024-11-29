@@ -26,7 +26,8 @@ export class FormUsuarioComponent {
       clave: ['', Validators.required],
       correo: ['', Validators.required],
       celular: ['', Validators.required],
-      direccion: ['', Validators.required]
+      direccion: ['', Validators.required],
+      estado: ['', Validators.required]
     })
   }
 
@@ -62,7 +63,6 @@ export class FormUsuarioComponent {
       },
       error: () => {
         this.toastr.error('No se pudo guardar el usuario', 'Error!!');
-        this.router.navigateByUrl('/');
       }
     })
   }
@@ -79,7 +79,6 @@ export class FormUsuarioComponent {
       },
       error: () => {
         this.toastr.error('No se pudo guardar el usuario', 'Error!!');
-        this.router.navigateByUrl('/');
       }
     })
   }
