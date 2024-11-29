@@ -3,6 +3,7 @@ import { ListProductoComponent } from './productos/list-producto/list-producto.c
 import { FormProductoComponent } from './productos/form-producto/form-producto.component';
 import { ListUsuarioComponent } from './usuarios/list-usuario/list-usuario.component';
 import { FormUsuarioComponent } from './usuarios/form-usuario/form-usuario.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,11 @@ export const routes: Routes = [
         path:'usuarios/form/:id',
         component: FormUsuarioComponent,
         title:'Formulario de usuarios'
+    },
+    {
+        path:'login',
+        component: LoginComponent,
+        title:'login'
     },
     {
         path:'**',

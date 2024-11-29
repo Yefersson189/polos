@@ -1,23 +1,27 @@
-<h3>Inicio de sesión</h3>
-<form class="form-horizontal mt-3">
-    <div class="form-group my-3">
-        <label class="col-lg-4 form-label">Login</label>
-        <div class="col-lg-4">
-        <input type="text" class="form-control" name="apellido" />
+<div class="row g-0 justify-content-center">
+    <div class="card col-lg-6">
+        <div class="card-header">
+            <h3>Inicio de sesión</h3>
+        </div>
+        <div class="card-body">
+            <form class="form-horizontal mt-2">
+                <div class="form-group my-2">
+                    <label class="form-label">Login</label>
+                        <input type="text" class="form-control" name="nombreUsuario" />
+                </div>
+
+                <div class="form-group my-2">
+                    <label class="form-label">Contraseña</label>
+                        <input type="text" class="form-control" name="clave" />
+                </div>
+
+                <div class="form-group">
+                    <div class="my-3">
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <button type="button" class="btn btn-light ms-3" routerLink="usuarios/form/new">Registrarse</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-
-    <div class="form-group my-3">
-        <label class="col-lg-4 form-label">Contraseña</label>
-        <div class="col-lg-4">
-        <input type="text" class="form-control" name="email" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="my-3">
-        <button type="submit" class="btn btn-primary">Ingresar</button>
-        </div>
-    </div>
-</form>
-
+</div>

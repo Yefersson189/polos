@@ -1,41 +1,37 @@
-<h3>Crear producto</h3>
-<form [formGroup]="formProduct" (ngSubmit)="edit ? updateProducto() : createProducto()" class="form-horizontal mt-3">
-    <div class="form-group my-3">
-        <label class="col-lg-4 form-label">Nombre</label>
-        <div class="col-lg-4">
-            <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre completo" />
+<div class="row g-0 justify-content-center">
+    <div class="card col-lg-6">
+        <div class="card-header">
+            <h3>Crear producto</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="formProduct" (ngSubmit)="edit ? updateProducto() : createProducto()"
+                class="form-horizontal mt-2">
+                <div class="form-group my-2">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control" formControlName="nombre" />
+                </div>
+
+                <div class="form-group my-2">
+                    <label class="form-label">Talla</label>
+                    <input type="text" class="form-control" formControlName="talla" />
+                </div>
+
+                <div class="form-group my-2">
+                    <label class="form-label">Precio</label>
+                    <input type="text" class="form-control" formControlName="precio" />
+                </div>
+
+                <div class="form-group my-2">
+                    <label class="form-label">Imagen</label>
+                    <input type="text" class="form-control" formControlName="imagen" />
+                </div>
+
+                <div class="form-group">
+                    <div class="my-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-
-    <div class="form-group my-3">
-        <label class="col-lg-4 form-label">Talla</label>
-        <div class="col-lg-4">
-            <input type="text" class="form-control" formControlName="talla" />
-        </div>
-    </div>
-
-    <div class="form-group my-3">
-        <label class="col-lg-4 form-label">Precio</label>
-        <div class="col-lg-4">
-            <input type="text" class="form-control" formControlName="precio" />
-        </div>
-    </div>
-
-    <div class="form-group my-3">
-        <label class="col-lg-4 form-label">Imagen</label>
-        <div class="col-lg-4">
-            <input type="text" class="form-control" formControlName="imagen" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="my-3">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
-    </div>
-</form>
-
-<div *ngIf="showAlert" class="alert {{classAlert}} alert-dismissible fade show" role="alert">
-    {{message}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
