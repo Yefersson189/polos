@@ -9,25 +9,25 @@ import { Producto } from '../models/Producto';
 export class ProductoService {
   private apiUrl = 'http://localhost:8080/producto';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getProductos():Observable<Producto[]>{
+  getProductos(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.apiUrl);
   }
 
-  getProductoById(id:number):Observable<Producto>{
+  getProductoById(id: number): Observable<Producto> {
     return this.http.get<Producto>(`${this.apiUrl}/${id}`);
   }
 
-  createProducto(producto:Producto):Observable<Producto> {
+  createProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.apiUrl, producto);
   }
 
-  updateProducto(producto:Producto) {
+  updateProducto(producto: Producto) {
     return this.http.put(this.apiUrl, producto);
   }
 
-  deleteProducto(id:number) {
+  deleteProducto(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

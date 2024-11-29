@@ -1,74 +1,20 @@
-
 <div class="row">
-    <h3>Listado de productos</h3>
-    <div class="card ms-5 mt-5" style="width: 20rem;">
-        <img src="..." class="card-img-top" alt="...">
-      
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-      
-    <div class="card ms-5 mt-5" style="width: 20rem;">
-        <img src="..." class="card-img-top" alt="...">
-      
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+  <h3>Listado de productos</h3>
+  @for (producto of productos; track producto.id) {
+  <div class="card ms-5 mt-5" style="width: 20rem;">
+    <img src="{{producto.imagen}}" class="card-img-top" alt="...">
 
-    <div class="card ms-5 mt-5" style="width: 20rem;">
-        <img src="..." class="card-img-top" alt="...">
-      
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+    <div class="card-body">
+      <h5 class="card-title">{{producto.nombre}}</h5>
+      <p class="card-text">{{producto.talla}} - {{producto.precio}}</p>
+      <a href="#" class="btn btn-primary">Añadir</a>
     </div>
-
-    <div class="card ms-5 mt-5" style="width: 20rem;">
-        <img src="..." class="card-img-top" alt="...">
-      
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+  </div>
+  } @empty {
+  <div class="col-lg-4">
+    <div class="alert alert-warning" role="alert">
+      No se encontraron productos
     </div>
-
-    <div class="card ms-5 mt-5" style="width: 20rem;">
-        <img src="..." class="card-img-top" alt="...">
-      
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-
-    <div class="card ms-5 mt-5" style="width: 20rem;">
-        <img src="..." class="card-img-top" alt="...">
-      
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-
-    <div class="card ms-5 mt-5" style="width: 20rem;">
-        <img src="..." class="card-img-top" alt="...">
-      
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+  </div>
+  }
 </div>
-
