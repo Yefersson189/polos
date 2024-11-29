@@ -1,39 +1,44 @@
-import { Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { ListProductoComponent } from './productos/list-producto/list-producto.component';
 import { FormProductoComponent } from './productos/form-producto/form-producto.component';
 import { ListUsuarioComponent } from './usuarios/list-usuario/list-usuario.component';
 import { FormUsuarioComponent } from './usuarios/form-usuario/form-usuario.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './services/auth.guards';
+import { Inject, inject } from '@angular/core';
 
 export const routes: Routes = [
     {
-        path:'',
+        path: '',
         component: ListProductoComponent,
-        title:'Listado de Productos'
+        canActivate: [AuthGuard]
     },
     {
-        path:'productos/form/:id',
+        path: 'productos/list',
+        component: ListProductoComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'productos/form/:id',
         component: FormProductoComponent,
-        title:'Formulario de productos'
+        canActivate: [AuthGuard]
     },
     {
-        path:'usuarios/list',
+        path: 'usuarios/list',
         component: ListUsuarioComponent,
-        title:'Listado de usuarios'
+        canActivate: [AuthGuard]
     },
     {
-        path:'usuarios/form/:id',
-        component: FormUsuarioComponent,
-        title:'Formulario de usuarios'
+        path: 'usuarios/form/:id',
+        component: FormUsuarioComponent
     },
     {
-        path:'login',
-        component: LoginComponent,
-        title:'login'
+        path: 'login',
+        component: LoginComponent
     },
     {
-        path:'**',
-        redirectTo:'',
-        pathMatch:'full'
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full'
     }
 ];

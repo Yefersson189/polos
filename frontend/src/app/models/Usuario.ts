@@ -6,5 +6,5 @@ export interface Usuario {
     correo: string;
     celular: string;
     direccion: string;
-    estado: string;
+    estado: boolean;
 }
