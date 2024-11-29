@@ -1,7 +1,7 @@
-package com.polos.luciana.domian.impl;
+package com.polos.luciana.domain.impl;
 
-import com.polos.luciana.domian.UsuarioService;
-import com.polos.luciana.domian.dto.request.UsuarioDto;
+import com.polos.luciana.domain.UsuarioService;
+import com.polos.luciana.domain.dto.request.UsuarioDto;
 import com.polos.luciana.exception.BusinessException;
 import com.polos.luciana.persistence.entity.Usuario;
 import com.polos.luciana.persistence.mappers.UsuarioMapper;
@@ -96,5 +96,15 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new BusinessException(
                     String.valueOf(HttpStatus.NO_CONTENT.value()), HttpStatus.NO_CONTENT.getReasonPhrase());
         }
+    }
+
+    @Override
+    public void eliminar(int idUsuario) {
+
+        if(!usuarioRepository.existsById(idUsuario)) {
+            throw new BusinessException(
+                    String.valueOf(HttpStatus.NO_CONTENT.value()), HttpStatus.NO_CONTENT.getReasonPhrase());
+        }
+        usuarioRepository.deleteById(idUsuario);
     }
 }

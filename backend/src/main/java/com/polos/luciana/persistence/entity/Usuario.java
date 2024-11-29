@@ -24,24 +24,24 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	 @Column(name = "nombre_completo")
-	 private String nombreCompleto;
-	 
-	 @Column(name = "nombre_usuario")
-	 private String nombreUsuario;
-	 
-	 @Column(name = "clave")
-	 private String clave;
-	 
-	 @Column(name = "correo")
-	 private String correo;
-	 
-	 @Column(name = "celular")
-	 private String celular;
-	 
-	 @Column(name = "direccion")
-	 private String direccion;
-	 
-	 @Column(name = "estado")
-	 private boolean estado;
+	@Column(name = "nombre_completo")
+	private String nombreCompleto;
+
+	@Column(name = "nombre_usuario")
+	private String nombreUsuario;
+
+	@Column(name = "clave")
+	private String clave;
+
+	@Column(name = "correo")
+	private String correo;
+
+	@Column(name = "celular")
+	private String celular;
+
+	@Column(name = "direccion")
+	private String direccion;
+
+	@Column(name = "estado")
+	private boolean estado;
 }

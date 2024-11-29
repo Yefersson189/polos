@@ -3,10 +3,11 @@ package com.polos.luciana.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.polos.luciana.domian.UsuarioService;
-import com.polos.luciana.domian.dto.request.UsuarioDto;
+import com.polos.luciana.domain.UsuarioService;
+import com.polos.luciana.domain.dto.request.UsuarioDto;
 
 import jakarta.validation.Valid;
 
@@ -46,5 +47,12 @@ public class UsuarioController {
 	public UsuarioDto editar(@RequestBody @Valid UsuarioDto usuarioDto) {
 
 		return service.editar(usuarioDto);
+	}
+
+	@DeleteMapping("/delete")
+	public ResponseEntity<Void> eliminar(@RequestParam int id) {
+
+		service.eliminar(id);
+		return ResponseEntity.ok().build();
 	}
 }

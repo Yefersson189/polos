@@ -7,12 +7,6 @@ import lombok.NoArgsConstructor;
 public class Constant {
 
     /**
-     * Validaciones
-     */
-	public static final String NOT_NULL = ": no puede ser nulo.";
-    public static final String NOT_BLANK = ": no puede estar vacío.";
-
-    /**
      * Mensajes
      */
     public static final String RESPONSE_REQUEST_ERROR = "Parametros Invalidos";

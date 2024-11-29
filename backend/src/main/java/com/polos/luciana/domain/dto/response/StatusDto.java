@@ -1,4 +1,4 @@
-package com.polos.luciana.domian.dto.ressponse;
+package com.polos.luciana.domain.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

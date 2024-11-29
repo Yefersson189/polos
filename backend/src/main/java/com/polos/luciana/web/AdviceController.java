@@ -1,11 +1,14 @@
 package com.polos.luciana.web;
 
-import com.polos.luciana.domian.dto.ressponse.ResponseServiceDto;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.polos.luciana.domain.dto.response.ResponseServiceDto;
 import com.polos.luciana.exception.BusinessException;
 import com.polos.luciana.util.RequestResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -81,6 +84,28 @@ public class AdviceController {
 
 		return new ResponseEntity<> (requestResponseUtils.construirRespuesta(HttpStatus.BAD_REQUEST.value(),
 				RESPONSE_REQUEST_ERROR), HttpStatus.BAD_REQUEST);
+	}
+
+	/**
+	 * Manejo de excepciones InvalidFormatException del servicio
+	 * @param exception la excepcion HttpMessageNotReadableException
+	 * @return ResponseEntity con la respuesta definida al servicio
+	 */
+	@ExceptionHandler(value = HttpMessageNotReadableException.class)
+	public ResponseEntity<ResponseServiceDto> handlerHttpMessageNotReadableException (HttpMessageNotReadableException exception)  {
+
+		Throwable mostSpecificCause = exception.getMostSpecificCause();
+
+		if (mostSpecificCause instanceof JsonParseException ||
+				mostSpecificCause instanceof IllegalArgumentException ||
+				mostSpecificCause instanceof HttpMessageNotReadableException ||
+				mostSpecificCause instanceof InvalidFormatException) {
+			return new ResponseEntity<> (requestResponseUtils.construirRespuesta(HttpStatus.BAD_REQUEST.value(),
+					RESPONSE_REQUEST_ERROR), HttpStatus.BAD_REQUEST);
+		}
+
+		return new ResponseEntity<> (requestResponseUtils.construirRespuesta(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+				(HttpStatus.INTERNAL_SERVER_ERROR).getReasonPhrase()), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 

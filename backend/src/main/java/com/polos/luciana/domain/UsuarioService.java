@@ -1,6 +1,6 @@
-package com.polos.luciana.domian;
+package com.polos.luciana.domain;
 
-import com.polos.luciana.domian.dto.request.UsuarioDto;
+import com.polos.luciana.domain.dto.request.UsuarioDto;
 
 import java.util.List;
 
@@ -16,4 +16,5 @@ public interface UsuarioService {
 
     UsuarioDto editar(UsuarioDto Usuario);
 
+    void eliminar(int idUsuario);
 }

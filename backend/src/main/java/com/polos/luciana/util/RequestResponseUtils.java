@@ -2,8 +2,8 @@ package com.polos.luciana.util;
 
 import org.springframework.stereotype.Component;
 
-import com.polos.luciana.domian.dto.ressponse.ResponseServiceDto;
-import com.polos.luciana.domian.dto.ressponse.StatusDto;
+import com.polos.luciana.domain.dto.response.ResponseServiceDto;
+import com.polos.luciana.domain.dto.response.StatusDto;
 
 @Component
 public class RequestResponseUtils {
