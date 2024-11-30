@@ -29,19 +29,16 @@ public class ProductoController {
 
     @GetMapping("/listid")
     public ProductoDto listarId(@RequestParam int id) {
-
         return service.listarId(id);
     }
 
     @PutMapping("/edit")
-    public ProductoDto editar(@RequestParam("imagen") MultipartFile imagen, @RequestPart ProductoDto productoDto) {
-
-        return service.editar(productoDto, imagen);
+    public ProductoDto editar(@RequestParam("imagen") MultipartFile imagen, @RequestPart ProductoDto producto) {
+        return service.editar(producto, imagen);
     }
 
     @DeleteMapping("/delete")
     public ResponseEntity<Void> eliminar(@RequestParam int id) {
-
         service.eliminar(id);
         return ResponseEntity.ok().build();
     }

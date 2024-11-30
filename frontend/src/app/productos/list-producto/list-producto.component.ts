@@ -3,6 +3,7 @@ import { Producto } from '../../models/Producto';
 import { ProductoService } from '../../services/producto.service';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +15,7 @@ export class ListProductoComponent {
   productos: Producto[] = [];
   isSave: boolean = false;
 
-  constructor(private productoService: ProductoService, private toastr: ToastrService) { }
+  constructor(private productoService: ProductoService, private carritoService: CarritoService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -40,6 +41,10 @@ export class ListProductoComponent {
       }
     })
 
+  }
+
+  agregarProducto(item: Producto) {
+    this.carritoService.agregar(item);
   }
 
 }

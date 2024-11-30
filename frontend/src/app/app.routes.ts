@@ -5,6 +5,7 @@ import { ListUsuarioComponent } from './usuarios/list-usuario/list-usuario.compo
 import { FormUsuarioComponent } from './usuarios/form-usuario/form-usuario.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guards';
+import { CarritoComponent } from './carrito/carrito.component';
 
 export const routes: Routes = [
     {
@@ -36,8 +37,7 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path: '**',
-        redirectTo: '',
-        pathMatch: 'full'
+        path: 'carrito',
+        component: CarritoComponent
     }
 ];

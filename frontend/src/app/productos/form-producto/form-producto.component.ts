@@ -97,6 +97,7 @@ export class FormProductoComponent {
         next: () => {
           this.toastr.success('Producto actualizado correctamente', 'Exito!!');
           this.isSave = false;
+          this.router.navigateByUrl('/productos/list');
         },
         error: () => {
           this.toastr.error('No se pudo guardar el producto', 'Error!!');
