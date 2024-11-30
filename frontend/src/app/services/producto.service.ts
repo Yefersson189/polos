@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/Producto';
@@ -7,7 +7,7 @@ import { Producto } from '../models/Producto';
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:8080/producto';
+  private apiUrl = 'http://localhost:8080/polos_back/productos';
 
   constructor(private http: HttpClient) { }
 
@@ -16,18 +16,20 @@ export class ProductoService {
   }
 
   getProductoById(id: number): Observable<Producto> {
-    return this.http.get<Producto>(`${this.apiUrl}/${id}`);
+    let params = new HttpParams().set("id", id);
+    return this.http.get<Producto>(`${this.apiUrl}/listid`, { params: params });
   }
 
-  createProducto(producto: Producto): Observable<Producto> {
-    return this.http.post<Producto>(this.apiUrl, producto);
+  createProducto(formData: FormData): Observable<Producto> {
+    return this.http.post<Producto>(`${this.apiUrl}/add`, formData);
   }
 
-  updateProducto(producto: Producto) {
-    return this.http.put(this.apiUrl, producto);
+  updateProducto(formData: FormData) {
+    return this.http.put(`${this.apiUrl}/edit`, formData);
   }
 
   deleteProducto(id: number) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    let params = new HttpParams().set("id", id);
+    return this.http.delete(`${this.apiUrl}/delete`, { params: params });
   }
 }

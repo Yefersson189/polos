@@ -5,35 +5,61 @@
         </div>
         <div class="card-body">
             <form [formGroup]="formUser" (ngSubmit)="edit ? updateUsuario() : createUsuario()"
-                class="form-horizontal mt-2">
+                class="form-horizontal mt-2 needs-validation" novalidate>
                 <div class="form-group my-2">
-                    <label class=" form-label">Nombre completo</label>
-                    <input type="text" class="form-control" formControlName="nombreCompleto" />
+                    <label class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control"
+                        [class.is-invalid]="!formUser.controls['nombreCompleto'].valid"
+                        formControlName="nombreCompleto" />
+                    <div class="invalid-feedback">
+                        Por favor ingrese el nombre completo
+                    </div>
                 </div>
 
                 <div class="form-group my-2">
                     <label class="form-label">Login</label>
-                    <input type="text" class="form-control" formControlName="nombreUsuario" />
+                    <input type="text" class="form-control"
+                        [class.is-invalid]="!formUser.controls['nombreUsuario'].valid"
+                        formControlName="nombreUsuario" />
+                    <div class="invalid-feedback">
+                        Por favor ingrese el nombre de usuario
+                    </div>
                 </div>
 
                 <div class="form-group my-2">
                     <label class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" formControlName="clave" />
+                    <input type="password" class="form-control"
+                        [class.is-invalid]="!formUser.controls['clave'].valid" formControlName="clave" />
+                    <div class="invalid-feedback">
+                        Por favor ingrese la contraseña
+                    </div>
                 </div>
 
                 <div class="form-group my-2">
                     <label class=" form-label">Correo Electrónico</label>
-                    <input type="text" class="form-control" formControlName="correo" />
+                    <input type="text" class="form-control"
+                        [class.is-invalid]="!formUser.controls['correo'].valid" formControlName="correo" />
+                    <div class="invalid-feedback">
+                        Por favor ingrese el correo Electrónico
+                    </div>
                 </div>
 
                 <div class="form-group my-2">
                     <label class="form-label">Teléfono Celular</label>
-                    <input type="text" class="form-control" formControlName="celular" />
+                    <input type="text" class="form-control"
+                        [class.is-invalid]="!formUser.controls['celular'].valid" formControlName="celular" />
+                    <div class="invalid-feedback">
+                        Por favor ingrese el Teléfono Celular
+                    </div>
                 </div>
 
                 <div class="form-group my-2">
                     <label class="form-label">Dirección</label>
-                    <input type="text" class="form-control" formControlName="direccion" />
+                    <input type="text" class="form-control"
+                        [class.is-invalid]="!formUser.controls['direccion'].valid" formControlName="direccion" />
+                    <div class="invalid-feedback">
+                        Por favor ingrese la dirección
+                    </div>
                 </div>
 
                 <div class="form-group my-2">
@@ -45,7 +71,7 @@
 
                 <div class="form-group">
                     <div class="my-3">
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                        <button type="submit" [disabled]="isSave" class="btn btn-primary">Guardar</button>
                     </div>
                 </div>
             </form>

@@ -25,11 +25,12 @@ export class UsuarioService {
   }
 
   updateUsuario(usuario: Usuario) {
-    return this.http.put(this.apiUrl, usuario);
+    return this.http.put(`${this.apiUrl}/edit`, usuario);
   }
 
   deleteUsuario(id: number) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    let params = new HttpParams().set("id", id);
+    return this.http.delete(`${this.apiUrl}/delete`, { params: params });
   }
 
 }

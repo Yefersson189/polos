@@ -1,9 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-primary">
   <div class="container-fluid">
+
     <a class="navbar-brand" href="#">
-      <h1>Polos Luciana</h1>
+      <img src="logo.png" style="width: 23px;height: 35px;" class="d-inline-block align-text-top" alt="...">
+      Polos Luciana 
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div *ngIf="isAuth" class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -12,7 +16,8 @@
           <a class="nav-link active" aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Usuarios
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -21,7 +26,8 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Productos
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,5 +44,5 @@
   </div>
 </nav>
 <div class="container-fluid my-3 h-100">
-   <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class FormProductoComponent {
   formProduct!: FormGroup;
   edit: boolean = false;
+  isSave: boolean = false;
+  selectedFile: File | null = null;
 
   constructor(private fb: FormBuilder,
     private productoService: ProductoService,
@@ -36,6 +38,13 @@ export class FormProductoComponent {
     }
   }
 
+  onFileSelected(event: any) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
   getProductoById(id: number) {
     this.productoService.getProductoById(id).subscribe({
       next: foundProduct => {
@@ -53,16 +62,25 @@ export class FormProductoComponent {
       this.toastr.error('Revise los campos e intente nuevamente', 'Error!!');
       return;
     }
-    this.productoService.createProducto(this.formProduct.value).subscribe({
-      next:() => {
-        this.toastr.success('Producto guardado correctamente', 'Exito!!');
-        this.router.navigateByUrl('/');
-      },
-      error: () => {
-        this.toastr.error('No se pudo guardar el producto', 'Error!!');
-        this.router.navigateByUrl('/');
-      }
-    })
+
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('imagen', this.selectedFile);
+      formData.append('producto', new Blob([JSON.stringify(this.formProduct.value)], { type: "application/json" }));
+      this.isSave = true;
+      this.productoService.createProducto(formData).subscribe({
+        next: () => {
+          this.toastr.success('Producto guardado correctamente', 'Exito!!');
+          this.isSave = false;
+          this.router.navigateByUrl('/productos/list');
+        },
+        error: () => {
+          this.toastr.error('No se pudo guardar el producto', 'Error!!');
+          this.isSave = false;
+        }
+      })
+    }
+
   }
 
   updateProducto() {
@@ -70,16 +88,22 @@ export class FormProductoComponent {
       this.toastr.error('Revise los campos e intente nuevamente', 'Error!!');
       return;
     }
-    this.productoService.updateProducto(this.formProduct.value).subscribe({
-      next:() => {
-        this.toastr.success('Producto actualizado correctamente', 'Exito!!');
-        this.router.navigateByUrl('/');
-      },
-      error: () => {
-        this.toastr.error('No se pudo guardar el producto', 'Error!!');
-        this.router.navigateByUrl('/');
-      }
-    })
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('imagen', this.selectedFile);
+      formData.append('producto', new Blob([JSON.stringify(this.formProduct.value)], { type: "application/json" }));
+      this.isSave = true;
+      this.productoService.updateProducto(formData).subscribe({
+        next: () => {
+          this.toastr.success('Producto actualizado correctamente', 'Exito!!');
+          this.isSave = false;
+        },
+        error: () => {
+          this.toastr.error('No se pudo guardar el producto', 'Error!!');
+          this.isSave = false;
+        }
+      })
+    }
   }
 
 }

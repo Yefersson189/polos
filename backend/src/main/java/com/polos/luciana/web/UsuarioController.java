@@ -1,17 +1,14 @@
 package com.polos.luciana.web;
 
-import java.util.List;
-
+import com.polos.luciana.domain.UsuarioService;
+import com.polos.luciana.domain.dto.request.UsuarioDto;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.polos.luciana.domain.UsuarioService;
-import com.polos.luciana.domain.dto.request.UsuarioDto;
+import java.util.List;
 
-import jakarta.validation.Valid;
-
-@CrossOrigin(origins="http://localhost:4200", maxAge=3600)
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {

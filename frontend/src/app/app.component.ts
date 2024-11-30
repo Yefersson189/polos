@@ -24,12 +24,11 @@ export class AppComponent {
 
   ngOnInit(): void {
     let id = localStorage.getItem('token');
-    console.log("Usuario id" + id)
     if (id) {
+      this.isAuth = true;
       this.usuarioService.getUsuarioById(+id).subscribe({
         next: foundUsuario => {
           this.usuarioActual = foundUsuario
-          this.isAuth = true;
         },
         error: () => {
           this.toastr.error('No se encontro el usuario', 'Error!!');

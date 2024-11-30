@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FormUsuarioComponent {
   formUser!: FormGroup;
   edit: boolean = false;
+  isSave: boolean = false;
 
   constructor(private fb: FormBuilder,
     private usuarioService: UsuarioService,
@@ -46,7 +47,7 @@ export class FormUsuarioComponent {
       },
       error: () => {
         this.toastr.error('No se encontro el usuario', 'Error!!');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/usuarios/list');
       }
     })
   }
@@ -56,13 +57,16 @@ export class FormUsuarioComponent {
       this.toastr.error('Revise los campos e intente nuevamente', 'Error!!');
       return;
     }
+    this.isSave = true;
     this.usuarioService.createUsuario(this.formUser.value).subscribe({
       next:() => {
         this.toastr.success('Usuario guardado correctamente', 'Exito!!');
-        this.router.navigateByUrl('/');
+        this.isSave = false;
+        this.router.navigateByUrl('/usuarios/list');
       },
       error: () => {
         this.toastr.error('No se pudo guardar el usuario', 'Error!!');
+        this.isSave = false;
       }
     })
   }
@@ -72,13 +76,16 @@ export class FormUsuarioComponent {
       this.toastr.error('Revise los campos e intente nuevamente', 'Error!!');
       return;
     }
+    this.isSave = true;
     this.usuarioService.updateUsuario(this.formUser.value).subscribe({
       next:() => {
         this.toastr.success('Usuario actualizado correctamente', 'Exito!!');
-        this.router.navigateByUrl('/');
+        this.isSave = false;
+        this.router.navigateByUrl('/usuarios/list');
       },
       error: () => {
         this.toastr.error('No se pudo guardar el usuario', 'Error!!');
+        this.isSave = false;
       }
     })
   }

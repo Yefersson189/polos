@@ -5,7 +5,6 @@ import { ListUsuarioComponent } from './usuarios/list-usuario/list-usuario.compo
 import { FormUsuarioComponent } from './usuarios/form-usuario/form-usuario.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guards';
-import { Inject, inject } from '@angular/core';
 
 export const routes: Routes = [
     {

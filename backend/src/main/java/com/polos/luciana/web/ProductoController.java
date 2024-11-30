@@ -6,10 +6,10 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@CrossOrigin(origins="http://localhost:4200", maxAge=3600)
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
@@ -23,9 +23,8 @@ public class ProductoController {
     }
 
     @PostMapping("/add")
-    public ProductoDto adicionar(@RequestBody ProductoDto producto) {
-
-        return service.adicionar(producto);
+    public ProductoDto adicionar(@RequestParam("imagen") MultipartFile imagen, @RequestPart ProductoDto producto) {
+        return service.adicionar(producto, imagen);
     }
 
     @GetMapping("/listid")
@@ -35,9 +34,9 @@ public class ProductoController {
     }
 
     @PutMapping("/edit")
-    public ProductoDto editar(@RequestBody @Valid ProductoDto productoDto) {
+    public ProductoDto editar(@RequestParam("imagen") MultipartFile imagen, @RequestPart ProductoDto productoDto) {
 
-        return service.editar(productoDto);
+        return service.editar(productoDto, imagen);
     }
 
     @DeleteMapping("/delete")

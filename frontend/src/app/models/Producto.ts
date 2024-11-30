@@ -4,5 +4,5 @@ export interface Producto {
     talla: string;
     precio: number;
     imagen: string;
-    estado: string;
+    estado: boolean;
 }
