@@ -1,0 +1,62 @@
+<h3>Carrito de compras</h3>
+<div *ngIf="listCarrito.length > 0; else elseBlock">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped-columns mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Talla</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (item of listCarrito; track item.producto) {
+                            <tr>
+                                <td>{{item.producto.nombre}}</td>
+                                <td>{{item.producto.talla}}</td>
+                                <td> <img src="http://localhost:8080/polos_back/images/{{item.producto.imagen}}"
+                                        style="width:50px;height:60px;"></td>
+                                <td>{{item.cantidad}}</td>
+                                <td>$ {{item.producto.precio}}</td>
+                                <td>{{item.producto.precio * item.cantidad}}</td>
+                                <td><button type="button" class="btn btn-danger" (click)="eliminarItem($index)">Eliminar</button></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <h5>Resumen de compra</h5>
+                        <hr>
+                        <div class="d-flex justify-content-betweent mb-4">
+                            <p class="mb-2">Total</p>
+                            <p class="mb-2">$ {{getTotal()}}</p>
+                        </div>
+                          <a (click)="getWhatsAppLink()" target="_blank" rel="noopener noreferrer" class="btn btn-primary ms-3">Procesar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<ng-template #elseBlock>
+    <div class="col-lg-4">
+        <div class="alert alert-warning" role="alert">
+            No hay productos agregados
+        </div>
+    </div>
+</ng-template>
