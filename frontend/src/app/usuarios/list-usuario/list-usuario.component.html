@@ -26,8 +26,8 @@
                     <td>{{usuario.direccion}}</td>
                     <td>{{usuario.estado}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
+                        <a class="btn btn-primary me-md-2" routerLink="/usuarios/form/{{usuario.id}}">Editar</a>
+                        <button type="button" class="btn btn-danger" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
                     </td>
                 </tr>
             }
