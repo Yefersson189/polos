@@ -7,7 +7,7 @@ import { Usuario } from '../models/Usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://localhost:8080/polos_back/usuarios';
+  private apiUrl = 'http://3.145.103.40/polos_back/usuarios';
 
   constructor(private http: HttpClient) { }
 

@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Permite todas las rutas
-                .allowedOrigins("http://localhost:4200")
+                .allowedOrigins("http://polosluciana.s3-website.us-east-2.amazonaws.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 
